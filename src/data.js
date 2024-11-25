@@ -76,6 +76,26 @@ const items = [
     price: 18.99,
     dateAdded: "2023-08-21",
   },
+  {
+    id: 11,
+    name: "Lenevo",
+    category: "Laptop",
+    price: 149.99,
+    dateAdded: "2023-10-01",
+  },
+  {
+    id: 12,
+    name: "Blutooth Speakers",
+    category: "Electronics",
+    price: 49.99,
+    dateAdded: "2023-10-01",
+  },
+  {
+    id:13, 
+    name: "Laptop Bag", 
+    category:""
+  }
 ];
 
+const categories = ["Electronics", "Clothing", "Books", "Laptop", "Shoes", ]
 export default items;

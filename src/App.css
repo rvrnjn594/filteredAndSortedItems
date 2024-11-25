@@ -49,6 +49,21 @@
   transform: translateY(-10px);
 }
 
+.paginate {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: max-content;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.pageButton {
+  size: 30px;
+  border-radius: 10px;
+  background-color: white;
+}
 @media (max-width: 768px) {
   .filters input,
   .filters select {

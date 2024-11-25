@@ -5,7 +5,7 @@ import items from "./data.js";
 import Filters from "./components/Filters.jsx";
 import SortOptions from "./components/SortOptions.jsx";
 import ItemList from "./components/ItemList.jsx";
-import Pagination from "./components/Pagination.jsx";
+// import Pagination from "./components/Pagination.jsx";
 
 const App = () => {
   const [filteredItems, setFilteredItems] = useState(items);
@@ -15,6 +15,8 @@ const App = () => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [sortOrder, setSortOrder] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filterAndSortItems = () => {
     let filtered = items;
@@ -45,8 +47,8 @@ const App = () => {
         filtered = filtered.sort((a, b) => a.name.localeCompare(b.name));
       }
     }
-
     setFilteredItems(filtered);
+    setCurrentPage(1);
   };
 
   useEffect(() => {
@@ -55,7 +57,6 @@ const App = () => {
 
   // Pagination here
   const itemsPerPage = 3;
-  const [currentPage, setCurrentPage] = useState(1);
   // Calculate the indexes of the items
   const indexOfLastItem = itemsPerPage * currentPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -84,12 +85,17 @@ const App = () => {
       <SortOptions sortOrder={sortOrder} setSortOrder={setSortOrder} />
 
       <ItemList items={currentItems} />
+      {/* <ItemList items={filteredItems} /> */}
 
       {/* Adding Pagination Here */}
 
-      <div>
+      <div className="paginate">
         {[...Array(totalPages).keys()].map((pageNumber) => (
-          <button key={pageNumber} onClick={() => Paginate(pageNumber + 1)}>
+          <button
+            className="pageButton"
+            key={pageNumber}
+            onClick={() => Paginate(pageNumber + 1)}
+          >
             {pageNumber + 1}
           </button>
         ))}
